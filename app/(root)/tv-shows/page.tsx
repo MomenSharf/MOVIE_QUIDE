@@ -18,7 +18,7 @@ export default async function Page({
 }) {
   const user = await currentUser();
 
-  if (!user || (user && user.id != "user_2hkcdFPnx3OWjGSQihZK17OS1uH"))
+  if (!user || (user && user.id != process.env.ONLY_MY))
     return <div className="text-xl">Sorry</div>;
   
   let userInfo = null;
