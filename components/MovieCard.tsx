@@ -9,7 +9,7 @@ export default async function MovieCard({
 }: {
   movie: Movie;
   index: number;
-  user: User | null;
+  user: any;
 }) {
   let isBookmarked = false;
   if (user) {
