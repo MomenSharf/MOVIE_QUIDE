@@ -73,7 +73,7 @@ export default function MoviesListSlider({
           )}
           <div
             ref={sliderRef}
-            className={` ${"flex whitespace-nowrap gap-3 transition-transform *:min-w-[167px] scrollbar-hide"}`}
+            className={` ${"flex whitespace-nowrap gap-3 transition-transform *:min-w-[167px] "}`}
             style={{ transform: `translateX(-${translate}px)` }}
           >
             {children}

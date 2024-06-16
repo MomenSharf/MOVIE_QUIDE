@@ -1,5 +1,5 @@
 import MovieCard from "@/components/MovieCard";
-import MoviesListSlider from "@/components/MoviesLisSlider";
+import Scroll from "@/components/Scroll";
 import { get10 } from "@/lib/api";
 import { fetchUser } from "@/lib/user";
 import { currentUser } from "@clerk/nextjs/server";
@@ -22,7 +22,32 @@ export default async function Home() {
 
   return (
     <section className="w-full mt-5 flex flex-col gap-10">
-        <MoviesListSlider
+        <Scroll
+          title="Poplular | Movies"
+          link="/movies?sort_by=popularity.desc"
+        >
+          {PopularMovies}
+        </Scroll>
+        <Scroll
+          title="Poplular | TV Shows"
+          link="/tv-shows?sort_by=popularity.desc"
+        >
+          {PupularTVShows}
+        </Scroll>
+        <Scroll
+          title="New Playing | Movies"
+          link="/movies?sort_by=now_playing.desc"
+        >
+          {nowPlayingMovies}
+        </Scroll>
+
+        <Scroll
+          title="Upcomin | Movies"
+          link="/movies?sort_by=upcoming.desc"
+        >
+          {UpcamingMovies}
+        </Scroll>
+        {/* <MoviesListSlider
           title="Poplular | Movies"
           link="/movies?sort_by=popularity.desc"
         >
@@ -46,7 +71,7 @@ export default async function Home() {
           link="/movies?sort_by=upcoming.desc"
         >
           {UpcamingMovies}
-        </MoviesListSlider>
+        </MoviesListSlider> */}
     </section>
   );
 }
