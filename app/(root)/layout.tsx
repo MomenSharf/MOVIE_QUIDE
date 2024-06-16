@@ -24,7 +24,7 @@ export default function RootLayout({
           className={`${outfit.className} flex flex-col bg-semi-dark text-white w-full min-h-screen sm:flex-row`}
         >
           <Navbar />
-          <main className="mt-16 p-5 flex-1 overflow-hidden">
+          <main className="mt-20 p-5 flex-1 overflow-hidden">
             {children}
           </main>
         </body>
