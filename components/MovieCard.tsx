@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import BookmarkTag from "./BookmarkTag";
+import { MotionDiv } from "./useMotion";
 
 export default async function MovieCard({
   movie,
@@ -17,9 +18,23 @@ export default async function MovieCard({
       user.bookmarked.find((e: Movie) => e.id == movie.id)
     );
   }
+  const variants = {
+    hidden: {opacity: 0},
+    visible: {opacity: 1}
+  }
 
   return (
-    <div className="relative overflow-hidden rounded-md group">
+    <MotionDiv
+    variants={variants}
+    initial='hidden'
+    animate="visible"
+    transition={{
+      delay: index * 0.2,
+      ease:"easeInOut",
+      duration: 0.1
+    }}
+    viewport={{amount: 0}}
+     className="relative overflow-hidden rounded-md group">
       <Link
         href={`/movies/${movie.id}`}
         className="overflow-hidden transition-opacity duration-300 whitespace-nowrap z-10"
@@ -65,6 +80,6 @@ export default async function MovieCard({
         </div>
       </Link>
       {user && <BookmarkTag userId={user.id} movie={movie} bookmarked={isBookmarked} />}
-    </div>
+    </MotionDiv>
   );
 }
