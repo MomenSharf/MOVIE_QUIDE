@@ -14,7 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="p-3 sm:min-w-[115px] min-h-[100px]">
+    <div className="p-3 sm:min-w-[115px] min-h-[100px] fixed sm:relative w-full sm:w-auto z-20">
       <nav className="bg-dark-blue p-5 sm:h-full rounded-2xl flex items-center sm:flex-col justify-between sm:justify-start sm:max-h-[85vh] sm:fixed">
         <div className="sm:mb-16 cursor-pointer">
           <Link href="/">
