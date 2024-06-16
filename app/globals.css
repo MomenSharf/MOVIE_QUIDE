@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary w-3 rounded-full;
+}
+
+.wrapper {
+  @apply grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3
+}
+
+.input {
+  @apply bg-transparent border-0 outline-0 border-b-2 border-b-gray-600 p-3 w-full mb-3;
+}
+
+.btn {
+  @apply bg-primary p-3 rounded-md text-white hover:text-black hover:bg-white transition-all duration-300;
+}
+
+.animate-bounceX {
+  .animate-bounceX-item {
+    animation: bounce 1s infinite;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
