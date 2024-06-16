@@ -19,7 +19,7 @@ export default function LoadMore2({
     query?: string;
   };
   type: "movie" | "tv";
-  user: User | null;
+  user: any;
 }) {
   const { ref, inView } = useInView();
   const [data, setData] = useState<AnimeCardProps[]>([]);
