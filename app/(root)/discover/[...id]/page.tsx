@@ -107,13 +107,13 @@ export default async function page({
               <td className="text-[#5A698F] font-bold p-3">RATING</td>
               <td className="flex items-center gap-3">
                 <span
-                  className="p-1 w-fit rounded-md"
+                  className="p-1 w-fit rounded-md text-xs"
                   style={{
                     backgroundImage:
                       "linear-gradient(to right, rgba(141, 205, 162, 0.6), rgba(4, 180, 227, 0.6))",
                   }}
                 >
-                  TMDB {movieTV.vote_average.toFixed(2)}
+                  TMDB {movieTV.vote_average.toFixed(1)}
                 </span>
                 <span className="flex gap-2 justify-center leading-[3rem]">
                   <svg
