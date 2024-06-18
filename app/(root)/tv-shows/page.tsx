@@ -20,33 +20,29 @@ export default async function Page({
 
   if (!user || (user && user.id != process.env.ONLY_MY))
     return <div className="text-xl">Sorry</div>;
-  
+
   let userInfo = null;
   if (user) userInfo = await fetchUser(user.id);
 
-  const query = searchParams?.query
+  const query = searchParams?.query;
 
   const tv = query
     ? await search("tv", query)
     : await discover("tv", searchParams, userInfo);
 
-    
-
   return (
     <main className="w-full mt-5 flex flex-col">
-    <Search />
-    <div
-      className={`self-end flex gap-5 my-10 items-center overflow-hidden ${ 
-        query ? "h-0" : ""
-      }`}
-    >
-      <GenresDropDown type="movie" />
-      <FilterDropDown type="tv" />
-    </div>
-    <section className="wrapper">
-      {tv}
-    </section>
-    {!query && <LoadMore params={searchParams} type="tv" user={userInfo} />}
-  </main>
+      <Search />
+      <div
+        className={`self-end flex gap-5 my-10 items-center overflow-hidden ${
+          query ? "h-0" : ""
+        }`}
+      >
+        <GenresDropDown type="movie" />
+        <FilterDropDown type="tv" />
+      </div>
+      <section className="wrapper">{tv}</section>
+      {!query && <LoadMore params={searchParams} type="tv" user={userInfo} />}
+    </main>
   );
 }

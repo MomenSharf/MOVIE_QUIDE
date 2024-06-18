@@ -18,7 +18,7 @@ export default function LoadMore2({
     with_genres?: number | string;
     query?: string;
   };
-  type: "movie" | "tv";
+  type: "movie" | "tv" | undefined;
   user: any;
 }) {
   const { ref, inView } = useInView();
@@ -26,8 +26,7 @@ export default function LoadMore2({
 
   useEffect(() => {
     if (inView) {
-      console.log(page);
-
+      
       discover(
         type,
         {

@@ -39,9 +39,9 @@ export const TVGenres = [
   { id: 37, name: "Western" },
 ];
 
-const tvdetils = {
-  adult: false,
-  backdrop_path: "/m0bV3qBiJBBlpFaaKjwHo13MVjm.jpg",
+const tvDetials = {
+  adult: false, // same
+  backdrop_path: "/m0bV3qBiJBBlpFaaKjwHo13MVjm.jpg", // same
   created_by: [],
   episode_run_time: [60],
   first_air_date: "2005-01-03",
@@ -49,8 +49,8 @@ const tvdetils = {
     { id: 35, name: "Comedy" },
     { id: 10767, name: "Talk" },
   ],
-  homepage: "",
-  id: 14981,
+  homepage: "",// same
+  id: 14981, // same
   in_production: false,
   languages: ["en"],
   last_air_date: "2014-12-19",
@@ -84,7 +84,7 @@ const tvdetils = {
   origin_country: ["US"],
   original_language: "en",
   original_name: "The Late Late Show with Craig Ferguson",
-  overview:
+  overview:// same
     "The Late Late Show with Craig Ferguson is an American late-night talk show hosted by Scottish American comedian Craig Ferguson, who is the third regular host of the Late Late Show franchise. It follows Late Show with David Letterman in the CBS late-night lineup, airing weekdays in the US at 12:37 a.m. It is taped in front of a live studio audience from Monday to Friday at CBS Television City in Los Angeles, California, directly above the Bob Barker Studio. It is produced by David Letterman's production company Worldwide Pants Incorporated and CBS Television Studios.\n" +
     "\n" +
     "Since becoming host on January 3, 2005, after Craig Kilborn and Tom Snyder, Ferguson has achieved the highest ratings since the show's inception in 1995. While the majority of the episodes focus on comedy, Ferguson has also addressed difficult subject matter, such as the deaths of his parents, and undertaken serious interviews, such as one with Desmond Tutu, which earned the show a 2009 Peabody Award.",
@@ -216,8 +216,8 @@ const tvdetils = {
   vote_count: 89,
 };
 const moviedetils = {
-  adult: false,
-  backdrop_path: "/qjoX7hl721FOiyeHsDkeQ6rFVLl.jpg",
+  adult: false, // same
+  backdrop_path: "/qjoX7hl721FOiyeHsDkeQ6rFVLl.jpg", // same
   belongs_to_collection: {
     id: 1022790,
     name: "Inside Out Collection",
@@ -225,20 +225,20 @@ const moviedetils = {
     backdrop_path: "/bR8H6S3Jc2vhPvz2VWX0dQ3XTFV.jpg",
   },
   budget: 200000000,
-  genres: [
+  genres: [ // same
     { id: 16, name: "Animation" },
     { id: 10751, name: "Family" },
     { id: 18, name: "Drama" },
     { id: 12, name: "Adventure" },
     { id: 35, name: "Comedy" },
   ],
-  homepage: "https://movies.disney.com/inside-out-2",
-  id: 1022789,
+  homepage: "https://movies.disney.com/inside-out-2",// same
+  id: 1022789,// same
   imdb_id: "tt22022452",
   origin_country: ["US"],
   original_language: "en",
   original_title: "Inside Out 2",
-  overview:
+  overview:// same
     "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
   popularity: 2538.214,
   poster_path: "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",

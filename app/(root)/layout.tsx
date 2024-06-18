@@ -21,11 +21,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${outfit.className} flex flex-col bg-semi-dark text-white w-full min-h-screen sm:flex-row`}
+          className={`${outfit.className} bg-semi-dark text-white w-full min-h-screen`}
         >
-          <Navbar />
-          <main className="mt-20 p-5 flex-1 overflow-hidden">
-            {children}
+          <Navbar/>
+          <main className="pt-20">
+          {children}
           </main>
         </body>
       </html>

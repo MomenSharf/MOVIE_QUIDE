@@ -25,6 +25,10 @@
 .btn {
   @apply bg-primary p-3 rounded-md text-white hover:text-black hover:bg-white transition-all duration-300;
 }
+.nav-fixed {
+  @apply fixed 
+}
+
 
 .animate-bounceX {
   .animate-bounceX-item {

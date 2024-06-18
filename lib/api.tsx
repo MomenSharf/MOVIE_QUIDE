@@ -5,23 +5,20 @@ import { connectToDB } from "./mongoose";
 import { fetchUser } from "./user";
 import MovieCard from "@/components/MovieCard";
 
-const API_KEY = "87fc3483d84b44e35885d199ba0c4f36";
+const API_KEY = process.env.API_KEY;
+const API_KEY_OMDBAPI = process.env.API_KEY_OMDBAPI;
 const BASE_URL = "https://api.themoviedb.org/3";
 
-export async function get10(
+export async function get20(
   type: "movie" | "tv",
-  page: number,
-  filter: "popular" | "now_playing" | "upcoming",
+  filter: string,
   user: any
 ): Promise<any> {
-  const url = new URL(`${BASE_URL}/${type}/${filter}`);
-  url.searchParams.append("api_key", API_KEY);
 
   try {
     const response = await axios.get(`${BASE_URL}/${type}/${filter}`, {
       params: {
         api_key: API_KEY,
-        page: page.toString(),
       },
     });
     return response.data.results.map((movie: Movie, i: number) => {
@@ -34,7 +31,7 @@ export async function get10(
 }
 
 export async function discover(
-  type: "movie" | "tv",
+  type: "movie" | "tv" = "movie",
   params:
     | {
         sort_by?: string | undefined;
@@ -47,7 +44,7 @@ export async function discover(
 
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/${type}`,
+      `${BASE_URL}/discover/${type}`,
       {
         params: {
           api_key: API_KEY,
@@ -64,7 +61,7 @@ export async function discover(
   }
 }
 
-export async function search(type: "movie" | "tv", query: string) {
+export async function search(type: "movie" | "tv" = 'movie' , query: string) {
   noStore();
 
   try {
@@ -83,17 +80,17 @@ export async function search(type: "movie" | "tv", query: string) {
   }
 }
 
-export async function fetchMovieAndTVDetails(movieId: number) {
+export async function fetchMovieAndTVDetails(type: 'movie' | 'tv', id: number) {
+
   try {
-    const response = await axios.get(`${BASE_URL}/movie/${movieId}`, {
+    const response = await axios.get(`${BASE_URL}/${type}/${id}`, {
       params: {
-        api_key: API_KEY,
+        api_key: API_KEY, 
       },
     });
     return response.data;
   } catch (error) {
     console.error("Error fetching details", error);
-    return {};
   }
 }
 
@@ -138,4 +135,23 @@ export async function fetchBookcmarked(userid: string) {
   }
 }
 
-// const password()
+export const getimdbObject = async (id: number, type: 'movie'|  'tv') => {
+
+  try {
+
+    const response = await axios.get(`${BASE_URL}/${type}/${id}/external_ids`, {
+      params: {
+        api_key: API_KEY, 
+      }
+    });
+
+    const imdbObject = await axios.get(`http://www.omdbapi.com/?i=${response.data.imdb_id}&apikey=${API_KEY_OMDBAPI}`)
+    
+    return imdbObject.data
+  } catch (error: any) {
+    console.log(error.message);
+  }
+
+
+}
+

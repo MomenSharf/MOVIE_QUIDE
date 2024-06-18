@@ -1,22 +1,43 @@
 "use client";
 import Link from "next/link";
 import {
-  ClerkProvider,
   SignInButton,
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import ButtonUi from "./Button";
+import {  useEffect, useRef } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const navRef = useRef<HTMLDivElement>(null);
+  const previousScrollPosition = useRef(0);
+  const url = window.location.href
+  const type = new URL(url).searchParams.get("type");
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = (e: Event) => {
+    const currentScrollPosition = window.scrollY;
+    if (currentScrollPosition > previousScrollPosition.current) {
+      navRef.current?.classList?.add("opacity-0");
+    } else {
+      navRef.current?.classList?.remove("opacity-0");
+    }
+    previousScrollPosition.current = currentScrollPosition;
+  };
 
   return (
-    <div className="p-3 sm:min-w-[115px] min-h-[100px] fixed sm:relative w-full sm:w-auto z-20">
-      <nav className="bg-dark-blue p-5 sm:h-full rounded-2xl flex items-center sm:flex-col justify-between sm:justify-start sm:max-h-[85vh] sm:fixed">
-        <div className="sm:mb-16 cursor-pointer">
+    <nav className="w-full z-20 fixed" ref={navRef}>
+      <div className="bg-dark-blue p-5 flex items-center justify-between">
+        <div className="cursor-pointer">
           <Link href="/">
             <svg width="33" height="27" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -27,7 +48,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex flex-row gap-7 sm:flex-col justify-center items-center">
+        <div className="flex flex-row gap-7 justify-center items-center">
           <Link href="/" className="cursor-pointer group">
             <svg
               width="20"
@@ -44,7 +65,7 @@ export default function Navbar() {
               />
             </svg>
           </Link>
-          <Link href="/movies" className="cursor-pointer group">
+          <Link href="/discover?type=movie" className="cursor-pointer group">
             <svg
               width="20"
               height="20"
@@ -53,14 +74,14 @@ export default function Navbar() {
             >
               <path
                 className={`group-hover:fill-primary transition duration-200 ${
-                  pathname === "/movies" && "fill-primary"
+                  type === "movie" && "fill-primary"
                 }`}
                 d="M16.956 0H3.044A3.044 3.044 0 0 0 0 3.044v13.912A3.044 3.044 0 0 0 3.044 20h13.912A3.044 3.044 0 0 0 20 16.956V3.044A3.044 3.044 0 0 0 16.956 0ZM4 9H2V7h2v2Zm-2 2h2v2H2v-2Zm16-2h-2V7h2v2Zm-2 2h2v2h-2v-2Zm2-8.26V4h-2V2h1.26a.74.74 0 0 1 .74.74ZM2.74 2H4v2H2V2.74A.74.74 0 0 1 2.74 2ZM2 17.26V16h2v2H2.74a.74.74 0 0 1-.74-.74Zm16 0a.74.74 0 0 1-.74.74H16v-2h2v1.26Z"
                 fill="#5A698F"
               />
             </svg>
           </Link>
-          <Link href="/tv-shows" className="cursor-pointer group">
+          <Link href="/discover?type=tv" className="cursor-pointer group">
             <svg
               width="20"
               height="20"
@@ -69,7 +90,7 @@ export default function Navbar() {
             >
               <path
                 className={`group-hover:fill-primary transition duration-200 ${
-                  pathname === "/tv-shows" && "fill-primary"
+                  type === "tv"
                 }`}
                 d="M20 4.481H9.08l2.7-3.278L10.22 0 7 3.909 3.78.029 2.22 1.203l2.7 3.278H0V20h20V4.481Zm-8 13.58H2V6.42h10v11.64Zm5-3.88h-2v-1.94h2v1.94Zm0-3.88h-2V8.36h2v1.94Z"
                 fill="#5A698F"
@@ -129,7 +150,7 @@ export default function Navbar() {
             <UserButton />
           </SignedIn>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }

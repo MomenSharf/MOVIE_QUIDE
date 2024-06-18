@@ -4,7 +4,7 @@ export default function loading() {
 
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full min-h-screen flex justify-center items-center">
       <Spinner size="lg" color="primary"/>
     </div>
   )
