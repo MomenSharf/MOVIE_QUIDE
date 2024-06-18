@@ -1,5 +1,7 @@
 "use client";
 import { toggleTobookmarked } from "@/lib/api";
+import { MovieDetails } from "@/lib/types/movie";
+import { TVShowDetails } from "@/lib/types/tv";
 import { useFormState } from "react-dom";
 
 export default function BookmarkTag({
@@ -8,7 +10,7 @@ export default function BookmarkTag({
   bookmarked,
 }: {
   userId: string;
-  movie: Movie;
+  movie: MovieDetails | TVShowDetails;
   bookmarked: boolean;
 }) {
   async function toggle(prev: boolean, formData: FormData) {

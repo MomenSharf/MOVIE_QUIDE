@@ -4,6 +4,8 @@ import { unstable_noStore as noStore } from "next/cache";
 import { connectToDB } from "./mongoose";
 import { fetchUser } from "./user";
 import MovieCard from "@/components/MovieCard";
+import { MovieDetails } from "./types/movie";
+import { TVShowDetails } from "./types/tv";
 
 const API_KEY = process.env.API_KEY;
 const API_KEY_OMDBAPI = process.env.API_KEY_OMDBAPI;
@@ -97,7 +99,7 @@ export async function fetchMovieAndTVDetails(type: 'movie' | 'tv', id: number) {
 
 export async function toggleTobookmarked(
   userid: string,
-  movie: Movie,
+  movie: MovieDetails | TVShowDetails,
   add: boolean
 ) {
   connectToDB();

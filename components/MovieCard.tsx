@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import BookmarkTag from "./BookmarkTag";
 import { MotionDiv } from "./useMotion";
-import { getimdbObject } from "@/lib/api";
+import { fetchMovieAndTVDetails, getimdbObject } from "@/lib/api";
 
 export default async function MovieCard({
   movie,
@@ -28,6 +28,8 @@ export default async function MovieCard({
   const type: 'movie' | 'tv' = movie.name ? "tv" : 'movie'
 
   const imdbObject =  await getimdbObject(movie.id, type)
+
+  const hollMovie = await fetchMovieAndTVDetails(type, movie.id) 
   
 
   return (
@@ -101,7 +103,7 @@ export default async function MovieCard({
           {movie.title ? movie.title : movie.name}
         </div>
       </Link>
-      {user && <BookmarkTag userId={user.id} movie={movie} bookmarked={isBookmarked} />}
+      {user && <BookmarkTag userId={user.id} movie={hollMovie} bookmarked={isBookmarked} />}
     </MotionDiv>
   );
 }
