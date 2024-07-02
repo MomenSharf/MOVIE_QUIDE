@@ -17,28 +17,28 @@ export default function Scroll({
       <div className="flex"></div>
       <div className="overflow-y-scroll flex *:min-w-[167px] scrollbar-hide gap-3">
         {children}
-      
-      <Link href={link} className="flex justify-center items-center">
-        <ButtonUi className=" bg-opacity-80 animate-bounceX">
-          <span>See more</span>
-          <svg
-            className="animate-bounceX-item"
-            width="1rem"
-            height="1ren"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m13 16 4-4-4-4M7 16l4-4-4-4"
-              stroke="#FFFFFF"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </ButtonUi>
-      </Link>
+
+        <Link href={link} className="flex justify-center items-center">
+          <ButtonUi className=" bg-opacity-80 animate-bounceX">
+            <span>See more</span>
+            <svg
+              className="animate-bounceX-item"
+              width="1rem"
+              height="1rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m13 16 4-4-4-4M7 16l4-4-4-4"
+                stroke="#FFFFFF"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </ButtonUi>
+        </Link>
       </div>
     </div>
   );

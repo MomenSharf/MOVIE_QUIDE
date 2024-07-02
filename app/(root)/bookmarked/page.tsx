@@ -16,5 +16,5 @@ export default async function Page({}) {
 
   const bookmarked = await fetchBookcmarked(userInfo.id);
 
-  return <section className="wrapper">{bookmarked}</section>;
+  return <section className="wrapper p-5">{bookmarked}</section>;
 }

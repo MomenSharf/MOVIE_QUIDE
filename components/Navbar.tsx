@@ -6,15 +6,18 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import {  useEffect, useRef } from "react";
+import { Button } from "@nextui-org/react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams()
   const navRef = useRef<HTMLDivElement>(null);
   const previousScrollPosition = useRef(0);
-  const url = window.location.href
-  const type = new URL(url).searchParams.get("type");
+  
+  const type = searchParams.get("type");
+  
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -90,7 +93,7 @@ export default function Navbar() {
             >
               <path
                 className={`group-hover:fill-primary transition duration-200 ${
-                  type === "tv"
+                  type === "tv" && "fill-primary"
                 }`}
                 d="M20 4.481H9.08l2.7-3.278L10.22 0 7 3.909 3.78.029 2.22 1.203l2.7 3.278H0V20h20V4.481Zm-8 13.58H2V6.42h10v11.64Zm5-3.88h-2v-1.94h2v1.94Zm0-3.88h-2V8.36h2v1.94Z"
                 fill="#5A698F"
@@ -143,7 +146,7 @@ export default function Navbar() {
         <div className="sm:mt-auto text-sm">
           <SignedOut>
             <SignInButton>
-              <button className="btn">login</button>
+              <Button className="btn">login</Button>
             </SignInButton>
           </SignedOut>
           <SignedIn>

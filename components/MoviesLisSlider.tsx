@@ -117,7 +117,7 @@ export default function MoviesListSlider({
                 <svg
                   className="animate-bounceX-item"
                   width="1rem"
-                  height="1ren"
+                  height="1rmn"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,9 +125,9 @@ export default function MoviesListSlider({
                   <path
                     d="m13 16 4-4-4-4M7 16l4-4-4-4"
                     stroke="#FFFFFF"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </ButtonUi>

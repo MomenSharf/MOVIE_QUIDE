@@ -10,12 +10,9 @@ export default function Search() {
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set("page", "1");
-
     if (term) {
       params.set("query", term);
     } else {
-      
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
@@ -43,8 +40,11 @@ export default function Search() {
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        onBlur={(e) => {e.target.value = ''; handleSearch('')}}
-        defaultValue={searchParams.get('query')?.toString()}
+        onBlur={(e) => {
+          e.target.value = "";
+          handleSearch("");
+        }}
+        defaultValue={searchParams.get("query")?.toString()}
       />
     </div>
   );

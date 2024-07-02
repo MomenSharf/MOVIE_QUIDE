@@ -3,6 +3,7 @@ import React from "react";
 import BookmarkTag from "./BookmarkTag";
 import { MotionDiv } from "./useMotion";
 import { fetchMovieAndTVDetails, getimdbObject } from "@/lib/api";
+import Image from "next/image";
 
 export default async function MovieCard({
   movie,
@@ -49,13 +50,15 @@ export default async function MovieCard({
         className="overflow-hidden transition-opacity duration-300 whitespace-nowrap z-10"
       >
         <div className="h-full">
-          <img
+          <Image
             src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
-            alt={movie.title}
+            alt={movie.title || "movie"}
             className="object-cover"
+            width={256}
+            height={384}
           />
         </div>
-        {/* <div
+        <div
           className="absolute text-xs bottom-2 left-2 p-0.5 rounded-sm group-hover:opacity-0 transition-opacity"
           style={{
             backgroundImage:
@@ -63,8 +66,8 @@ export default async function MovieCard({
           }}
         >
           TMDB {movie.vote_average.toFixed(1)}
-        </div> */}
-        <div className="absolute flex gap-2 justify-center leading-[2.3rem] bsolute text-xs bottom-2 left-2 p-0.5 rounded-sm group-hover:opacity-0 transition-opacity h-6">
+        </div> 
+        {/* <div className="absolute flex gap-2 justify-center leading-[2.3rem] bsolute text-xs bottom-2 left-2 p-0.5 rounded-sm group-hover:opacity-0 transition-opacity h-6">
             <svg
               width="2rem"
               height="2rem"
@@ -78,7 +81,7 @@ export default async function MovieCard({
               />
             </svg>
             {imdbObject?.imdbRating}
-          </div>
+          </div> */}
         <div className="absolute top-2 left-2 text-xs flex gap-0.5 items-center">
           {type === 'tv' ? (
             <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
