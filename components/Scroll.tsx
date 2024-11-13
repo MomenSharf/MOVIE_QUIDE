@@ -15,7 +15,7 @@ export default function Scroll({
     <div className="">
       <h2 className="text-2xl mb-5">{title}</h2>
       <div className="flex"></div>
-      <div className="overflow-y-scroll flex *:min-w-[167px] scrollbar-hide gap-3">
+      <div className="overflow-y-scroll flex *:min-w-[167px] bar-hide gap-3">
         {children}
 
         <Link href={link} className="flex justify-center items-center">

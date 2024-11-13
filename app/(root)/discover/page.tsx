@@ -20,8 +20,8 @@ export default async function Page({
 }) {
   const user = await currentUser();
 
-  if (!user || (user && user.id != process.env.ONLY_MY))
-    return <div className="text-xl">Sorry</div>;
+  // if (!user || (user && user.id != process.env.ONLY_MY))
+  //   return <div className="text-xl">Sorry</div>;
 
   let userInfo = null;
   if (user) userInfo = await fetchUser(user.id);

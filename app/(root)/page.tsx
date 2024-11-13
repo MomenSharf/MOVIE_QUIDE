@@ -7,8 +7,8 @@ import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const user = await currentUser();
-  if (!user || (user && user.id != "user_2hkcdFPnx3OWjGSQihZK17OS1uH"))
-    return <div className="text-xl">Sorry</div>;
+  // if (!user || (user && user.id != "user_2hkcdFPnx3OWjGSQihZK17OS1uH"))
+  //   return <div className="text-xl">Sorry</div>;
 
   let userInfo = null;
   if (user) userInfo = await fetchUser(user.id);
