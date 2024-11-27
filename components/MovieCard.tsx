@@ -21,18 +21,18 @@ export default async function MovieCard({
     );
   }
 
+  
+  const type: 'movie' | 'tv' = movie.name ? "tv" : 'movie'
+
+  const imdbObject =  await getimdbObject(movie.id, type)
+  
+  const hollMovie = await fetchMovieAndTVDetails(type, movie.id) 
+  
+  
   const variants = {
     hidden: {opacity: 0},
     visible: {opacity: 1}
   }
-
-  const type: 'movie' | 'tv' = movie.name ? "tv" : 'movie'
-
-  const imdbObject =  await getimdbObject(movie.id, type)
-
-  const hollMovie = await fetchMovieAndTVDetails(type, movie.id) 
-  
-
   return (
     <MotionDiv
     variants={variants}

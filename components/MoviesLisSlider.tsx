@@ -70,6 +70,7 @@ export default function MoviesListSlider({
                 />
               </svg>
             </div>
+            
           )}
           <div
             ref={sliderRef}
